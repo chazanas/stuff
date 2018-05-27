@@ -1,0 +1,27 @@
+#all {
+	border : 20px solid #bdc3c7;
+	width: 80%;
+	max-width: 700px;
+	margin: 20px auto;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+.date {
+	color: #3498db;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+}
+
+#all div {
+	margin: 5%;
+	border-bottom: 2px solid #f1f1f1;
+}
+
+h2 {
+	color:  #2c3e50;
+}
+
+#all div p:nth-of-type(2){
+	border-left:  5px solid #bdc3c7;
+	padding-left: 5px;
+}
