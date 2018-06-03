@@ -1,14 +1,14 @@
+var but = document.getElementById('but');
+var par = document.getElementById('change');
 
-
-var x = prompt('hello?')
-hello(x)
-
-
-function hello(x){
-	if (x < 0){
-		alert('hello')
+but.addEventListener('click', function() {
+	if (par.textContent == 'Eu'){
+		par.textContent = 'Amo';
+	}
+	else if (par.textContent == 'Amo'){
+		par.textContent = 'Você';
 	}
 	else {
-		alert('FROM THE OTHER SIIIIIIDE')
+		par.textContent = 'Eu'
 	}
-}
+})
