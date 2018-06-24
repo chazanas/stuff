@@ -2,6 +2,8 @@ var app = {
 	todos : []
 }
 
+$('input').css('display', 'none');
+
 $('input').on('keypress', function(event) {
 	var task = $(this).val()
 	if(event.which == 13 && app.todos.indexOf(task) < 0 && task.length > 0){
