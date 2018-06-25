@@ -21,4 +21,18 @@ for j in range(1000):
 >>>>>>>>>>>>>>>>>>> 23243438473462abc327367ef87182631723abcd1
 
 
+<<<<<<<<<<<<<<<<<<<<<< HEAD
+
+for i in range(10akska0):
+	print('hi')
+
+================
+
+for j in range(1000):kamskamskm
+	print('bye')
+
+
+>>>>>>>>>>>>>>>>>>> 23243438473462abc327367ef87182631723abcd1
+
+
 print('yeah yeah')

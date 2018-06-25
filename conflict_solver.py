@@ -1,5 +1,7 @@
 import re
 
+REGEX = '<<+ HEAD\n*(([^=]*\n*)*)\n+==+\n+(([^>]*\n*)*)\n+>>+ [\d,a,c,b,d,e,f,A,B,C,D,E,F]*'
+
 ## read py file
 
 def conflict_solver(path, head):
@@ -10,6 +12,13 @@ def conflict_solver(path, head):
 
 	code = open(path, 'r').read()
 
-	regex = '>>+'
+	conflicts = re.search(REGEX, code)
+
+	print(conflicts.group(1), '\n\n\n\n\n\n', conflicts.group(3))
+
+if __name__ == '__main__':
+	conflict_solver('./dammed.py', True)
+
+	
 
 
