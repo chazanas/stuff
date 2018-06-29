@@ -1,6 +1,7 @@
+import os
 import re
 
-REGEX = '<<<+ HEAD\n*(([^=]*\n*)*)\n+===+\n+(([^>]*\n*)*)\n+>>>+ [\da-fA-F]+'
+REGEX = '<<<+ HEAD\n*(([^=]*\n*)*)\n+===+\n+(([^>]*\n*)*)\n+>>>+ .+'
 
 GROUP_CODE = {
 	True : 1,
@@ -72,7 +73,8 @@ def conflict_solver(path,
 		if len(path_out) > 0:
 			out = path_out
 		else:
-			file_split = file.path.split('.')
+			file_full = os.path.abspath(path)
+			file_split = file_full.split('.')
 			filename = file_split[0]
 			ext = file_split[1]
 			out = '{}_managed_{}.{}'.format(filename, HEAD_STR[head], ext)
@@ -107,7 +109,7 @@ def conflict_solver(path,
 		print(code)
 
 if __name__ == '__main__':
-	conflict_solver('./dammed.py', False, terminal=True)
+	conflict_solver('./dammed.py', True)
 
 	
 
