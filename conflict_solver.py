@@ -1,16 +1,16 @@
 import os
 import re
 
-REGEX = '<<<+ HEAD\n*(([^=]*\n*)*)\n+===+\n+(([^>]*\n*)*)\n+>>>+ .+'
+REGEX = '<<<+ HEAD\n*((?:[^=]*\n*)*)\n+===+\n+((?:[^>]*\n*)*)\n+>>>+ .+'
 
 GROUP_CODE = {
 	True : 1,
-	False: 3
+	False: 2
 }
 
 HEAD_STR = {
 	True: 'HEAD',
-	False: 'MASTER'
+	False: 'BRANCH'
 }
 
 CHECK_STR = {
@@ -31,8 +31,6 @@ DO_CHECK = {
 	'n' : False,
 	'N' : False
 }
-
-## read py file
 
 def conflict_solver(path, 
 					head, 
