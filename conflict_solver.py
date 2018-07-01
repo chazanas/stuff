@@ -1,7 +1,8 @@
+import argparse
 import os
 import re
 
-REGEX = '<<<+ HEAD\n*((?:[^=]*\n*)*)\n+===+\n+((?:[^>]*\n*)*)\n+>>>+ .+'
+REGEX = '<<<<+ HEAD\n+((?:(?!(?:====+)).*\n*)*)\n+====+\n+((?:(?!(?:>>>>+)).*\n*)*)\n+>>>>+ .+'
 
 GROUP_CODE = {
 	True : 1,
@@ -29,8 +30,70 @@ DO_CHECK = {
 	's' : True,
 	'y' : True,
 	'n' : False,
-	'N' : False
+	'N' : False,
+	0 : False,
+	'0' : False,
+	'1' : True,
+	1: True
 }
+
+def get_args():
+
+	parser = argparse.ArgumentParser(description='automatically solve' +
+		 							 'conflicts in std way')
+
+	parser.add_argument('-p', '--path',
+						action='store',
+						dest='path',
+						help='Path of conflicted file')
+
+	parser.add_argument('-h', '--head',
+						action='store_true',
+						dest='head',
+						help='conflict solving mode')
+
+	parser.add_argument('-e', '--exclude',
+						action='store_true',
+						dest='exclude',
+						default=False,
+						help='Overwrite file?')
+
+	parser.add_argument('-po', '--path-out',
+						action='store',
+						dest='path_out',
+						default='',
+						help='output path')
+
+	parser.add_argument('-v', '--verbose',
+						action='store_true',
+						dest='verbose',
+						default=True,
+						help='show actions')
+
+	parser.add_argument('-c', '--check',
+						action='store_true',
+						dest='check',
+						default=True,
+						help='ask permission before actions')
+
+	parser.add_argument('-t', '--terminal',
+						action='store_trued',
+						dest='terminal',
+						default=False,
+						help='print out solved code')
+
+	args = parser.parse_args()
+	path = args.path
+	head = args.head
+	exclude = args.exclude
+	path_out = args.path_out
+	verbose = args.verbose
+	check = args.check
+	terminal = args.terminal
+
+	return path, head, exclude, path_out, verbose, check, terminal
+
+
 
 def conflict_solver(path, 
 					head, 
@@ -107,7 +170,8 @@ def conflict_solver(path,
 		print(code)
 
 if __name__ == '__main__':
-	conflict_solver('./dammed.py', True)
+	path, head, exclude, path_out, verbose, check, terminal = get_args()
+	conflict_solver(path, head, exclude, path_out, verbose, check, terminal)
 
 	
 
