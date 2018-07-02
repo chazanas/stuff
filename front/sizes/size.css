@@ -1,0 +1,10 @@
+div {
+	background-color: blue; 
+	min-height: 100px;
+	width: 80%;
+	height: 50%;
+}
+
+body {
+	height: 30em;
+}
